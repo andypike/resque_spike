@@ -1,0 +1,6 @@
+%h1 End Points
+%p Enter a list of http urls, one per line:
+
+= form_tag end_points_path do
+  = text_area_tag 'end_points'
+  = submit_tag 'Process'

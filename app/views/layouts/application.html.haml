@@ -1,0 +1,12 @@
+!!! 5
+%html
+  %head
+    %title Resque Spike
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .notice= flash[:notice]
+    .alert= flash[:alert]
+
+    = yield
