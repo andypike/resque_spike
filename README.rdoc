@@ -1,3 +1,13 @@
+To run:
+-------
+
+  $ rvm gemset create resque_spike
+  $ rvm gemset use resque_spike
+  $ gem install bundler
+  $ bundle
+  $ rake db:migrate
+  $ rails s
+
 To install redis:
 -----------------
 
@@ -8,8 +18,8 @@ To start redis:
 
   $ redis-server /usr/local/etc/redis.conf
 
-To start workers:
------------------
+To start resque workers:
+------------------------
 
   $ COUNT=10 QUEUE=end_point_queue rake resque:workers SKIP_RAILS=true
   $ COUNT=3 QUEUE=response_queue rake resque:workers

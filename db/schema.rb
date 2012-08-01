@@ -11,13 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731213916) do
+ActiveRecord::Schema.define(:version => 20120801201247) do
 
   create_table "end_points", :force => true do |t|
     t.string   "url"
     t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "code"
+    t.datetime "enqueue_time"
+    t.datetime "request_start_time"
+    t.datetime "request_end_time"
   end
 
 end

@@ -2,7 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  font-family: arial, helvetica;
+}
+
 textarea {
   width: 500px;
   height: 300px;
+}
+
+table {
+  margin-top: 30px;
+  border: solid 1px #666;
+  border-collapse: collapse;
+
+  td, th {
+    padding: 10px;
+    border: solid 1px #666;
+  }
 }

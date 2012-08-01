@@ -4,3 +4,25 @@
 = form_tag end_points_path do
   = text_area_tag 'end_points'
   = submit_tag 'Process'
+
+%table
+  %tr
+    %th Enqueued
+    %th Url
+    %th Status
+    %th Request Duration
+    %th Time on queue 1
+    %th Time on queue 2
+    %th Completed
+    %th Total Duration
+
+  - @end_points.each do |end_point|
+    %tr
+      %td= end_point.enqueue_time
+      %td= end_point.url
+      %td= end_point.code
+      %td= number_with_precision((end_point.request_end_time - end_point.request_start_time), :precision => 2)
+      %td= number_with_precision((end_point.request_start_time - end_point.enqueue_time), :precision => 2)
+      %td= number_with_precision((end_point.created_at - end_point.request_end_time), :precision => 2)
+      %td= end_point.created_at
+      %td= number_with_precision((end_point.created_at - end_point.enqueue_time), :precision => 2)
