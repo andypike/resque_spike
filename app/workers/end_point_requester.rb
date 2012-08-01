@@ -17,7 +17,7 @@ class EndPointRequester
       :enqueue_time => request.enqueue_time,
       :request_start_time => start,
       :request_end_time => finish,
-      :body => r.body,
+      :body => r.body.force_encoding("UTF-8"),
       :code => r.code
     }
     Resque.enqueue(ResponseProcessor, response)

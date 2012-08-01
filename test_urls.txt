@@ -1,0 +1,26 @@
+http://www.google.com
+http://www.facebook.com
+http://www.youtube.com
+http://www.yahoo.com
+http://www.baidu.com
+http://www.wikipedia.org
+http://www.live.com
+http://www.qq.com
+http://www.twitter.com
+http://www.amazon.com
+http://www.blogspot.com
+http://www.linkedin.com
+http://www.google.co.in
+http://www.taobao.com
+http://www.sina.com.cn
+http://www.yahoo.co.jp
+http://www.msn.com
+http://www.google.com.hk
+http://www.wordpress.com
+http://www.google.de
+
+12 of these fail with an error similar to: 
+
+Encoding::UndefinedConversionError
+Error
+"\xE2" from ASCII-8BIT to UTF-8
