@@ -11,7 +11,7 @@ To start redis:
 To start workers:
 -----------------
 
-  $ COUNT=10 QUEUE=end_point_queue rake resque:workers
+  $ COUNT=10 QUEUE=end_point_queue rake resque:workers SKIP_RAILS=true
   $ COUNT=3 QUEUE=response_queue rake resque:workers
 
 View the rescue UI:
@@ -19,7 +19,9 @@ View the rescue UI:
 
   http://localhost:3000/resque
 
-TODO:
------
+Notes:
+------
 
-  * Currently the full rails app is loaded for each worker. To reduce memory we need to just include what we need. The end_point_queue only does the http calls and so doesn't need full app. The response_queue uses AR to save the results so it needs at least AR but might be easier with just the full rails app. Each worker is currently using 51mb of RAM.
+The 10 end_point workers do not load the rails env to save on memory. With the rails env these workers were about 51mb, without they are 14mb. So over all the workers that is a saving of 370mb or RAM.
+
+The 3 response_queue workers do load the rails env as they use AR to save the results. This queue is not time sensitive and is fast to process so less workers is fine.
