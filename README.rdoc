@@ -21,7 +21,7 @@ To start redis:
 To start resque workers:
 ------------------------
 
-  $ COUNT=10 QUEUE=end_point_queue rake resque:workers SKIP_RAILS=true
+  $ COUNT=10 QUEUE=end_point_queue rake resque:workers SKIP_RAILS=true INTERVAL=0.5
   $ COUNT=3 QUEUE=response_queue rake resque:workers
 
 View the rescue UI:
@@ -32,12 +32,8 @@ View the rescue UI:
 Notes:
 ------
 
-The 10 end_point workers do not load the rails env to save on memory. With the rails env these workers were about 51mb, without they are 14mb. So over all the workers that is a saving of 370mb or RAM.
+The 10 end_point workers do not load the rails env to save on memory. With the rails env these workers were about 51mb, without it they are 14mb. So over all the workers that is a saving of 370mb or RAM.
 
 The 3 response_queue workers do load the rails env as they use AR to save the results. This queue is not time sensitive and is fast to process so less workers is fine.
 
-To Do:
-------
-
-* Fix the encoding conversion issue for some responses (body I think) with the error: Encoding::UndefinedConversionError "\xE2" from ASCII-8BIT to UTF-8
-* 3 of the test urls are not added to the db. The console reports: rake aborted! redundant UTF-8 sequence 3 times for the response_queue
+In terms of memory, remember that the workers are forked before processing so the worker memory required could double (if all workers are processing at the same time).

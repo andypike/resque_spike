@@ -8,6 +8,7 @@
 %table
   %tr
     %th Enqueued
+    %th Requested
     %th Url
     %th Status
     %th Request Duration
@@ -19,6 +20,7 @@
   - @end_points.each do |end_point|
     %tr
       %td= end_point.enqueue_time
+      %td= end_point.request_start_time
       %td= end_point.url
       %td= end_point.code
       %td= number_with_precision((end_point.request_end_time - end_point.request_start_time), :precision => 2)
